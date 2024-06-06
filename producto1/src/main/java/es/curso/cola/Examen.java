@@ -2,8 +2,8 @@ package es.curso.cola;
 
 public class Examen {
 
-	String texto;
-	double nota;
+	private String texto;
+	private double nota;
 	public String getTexto() {
 		return texto;
 	}
@@ -15,6 +15,14 @@ public class Examen {
 	}
 	public void setNota(double nota) {
 		this.nota = nota;
+	}
+	public Examen(String texto, double nota) {
+		super();
+		this.texto = texto;
+		this.nota = nota;
+	}
+	public Examen() {
+		super();
 	}
 	
 	

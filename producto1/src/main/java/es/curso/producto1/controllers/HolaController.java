@@ -7,22 +7,20 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import es.curso.cola.Examen;
+import es.curso.producto1.services.ExamenService;
 
 @RestController
 public class HolaController {
 
-
 	@Autowired
-	private KafkaTemplate<String,Examen> kafkaTemplate;
+	private ExamenService examenService;
 	
 	
 	@RequestMapping("/enviar")
-	public String enviar(@RequestParam String mensaje) {
-		String topic= "examen-events";
-		Examen e= new Examen();
-		e.setNota(2);
-		e.setTexto("blabla");
-		kafkaTemplate.send(topic,e);
+	public String enviar(@RequestParam String  texto, @RequestParam int nota) {
+		
+		Examen e= new Examen(texto,nota);
+		examenService.insertarExamen(e);
 		return "mensaje enviado";
 	}
 }
