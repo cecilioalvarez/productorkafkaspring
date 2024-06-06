@@ -12,6 +12,8 @@ import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.kafka.core.ProducerFactory;
 import org.springframework.kafka.support.serializer.JsonSerializer;
 
+import es.curso.cola.Examen;
+
 @Configuration
 public class KafkaConfig {
 
@@ -26,7 +28,7 @@ public class KafkaConfig {
 	   }
 	
 	   @Bean
-	   public KafkaTemplate<String,String> kafkaTemplate() {
+	   public KafkaTemplate<String,Examen> kafkaTemplate() {
 	      return new KafkaTemplate(producerFactory());
 	   }
 }
